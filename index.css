@@ -1,0 +1,111 @@
+/** 1. Base Styles
+--------------------------------------------------------------*/
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  html {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #868686;
+  }
+  body.no-scroll {
+      overflow: hidden;
+  }
+  a {
+    color: #111;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 0;
+    padding: 0;
+    list-style: none;
+  }
+  ul ul,
+  ol ul,
+  ul ol,
+  ol ol {
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+  ul li, ol li {
+    margin-bottom: 5px;
+    outline: 0;
+  }
+  ul li.active a{
+    color: #daa556;
+  }
+  ul li:last-child,
+  ol li:last-child {
+    margin-bottom: 0;
+  }
+  dl {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  dt,
+  dd {
+    line-height: 1.42857143;
+  }
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin-left: 0;
+  }
+  button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    outline: 0;
+  }
+  figure {
+    margin: 0;
+  }
+  img {
+    display: inline-block;
+    border: 0;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+  ::selection {
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    text-shadow: none;
+  }
+  ::-moz-selection {
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    text-shadow: none;
+  }
+  ::-webkit-input-placeholder {
+    color: #000; /* WebKit browsers */
+    -webkit-transition: color .2s;
+    transition: color .2s;
+  }
+  ::-moz-placeholder {
+    color: #000; /* Mozilla Firefox 19+ */
+    -webkit-transition: color .2s;
+    transition: color .2s;
+  }
+  :-ms-input-placeholder {
+    color: #000;/* Internet Explorer 10+ */
+    -webkit-transition: color .2s;
+    transition: color .2s;
+  }
+  ::placeholder {
+    color: #000;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+  }
