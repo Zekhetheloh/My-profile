@@ -275,6 +275,38 @@
     color: #fff;
 }
 
+.btn-rounded {
+  border-radius: 50px; /* Makes the button rounder */
+  color: #fff; /* White text color */
+  border: 2px solid #D9892B; /* Border color */
+  padding: 15px 30px; /* Adjust padding as needed */
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none; /* Remove underline from links */
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+/* Button specific styles */
+.btn-weather {
+  background-color: #C790A7; /* Background color */
+}
+
+.btn-weather:hover {
+  background-color: #D9892B; /* Change background color on hover */
+  border-color: #C790A7; /* Change border color on hover */
+}
+
+.btn-download-cv {
+  background-color: #C790A7; /* Background color */
+}
+
+.btn-download-cv:hover {
+  background-color: #D9892B; /* Change background color on hover */
+  border-color: #C790A7; /* Change border color on hover */
+}
+
 /*----- Grid Layout
   --------------------------------------------------------------*/
   .container {
