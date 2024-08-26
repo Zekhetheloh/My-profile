@@ -4,9 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Location and Weather</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light background color */
+            color: #333; /* Dark text color for readability */
+            text-align: center; /* Center text in the body */
+        }
+
+        #location-info, #weather-info {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px; /* Max width to maintain readability */
+            background-color: #fff; /* White background for better contrast */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+        }
+
+        h1 {
+            color: #C790A7; /* Title color matching your theme */
+            margin-top: 20px;
+        }
+
+        .btn-go-back {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #C790A7; /* Matching color for the button */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 20px 0;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .btn-go-back:hover {
+            background-color: #a27087; /* Slightly darker shade for hover effect */
+        }
+    </style>
 </head>
 <body>
-    <img src="map-placeholder.png" class="map-image" alt="Click for Weather" style="cursor: pointer;">
+    <a href="javascript:history.back()" class="btn-go-back">Go Back</a>
+    <h1>Location and Weather</h1>
     <div id="location-info"></div>
     <div id="weather-info"></div>
     
@@ -91,15 +133,8 @@
                             // Handle reverse geocoding
                             handleGeocoding(lat, lon);
 
-                            // Set up event listener for the map image
-                            const mapImage = document.querySelector('.map-image');
-                            if (mapImage) {
-                                mapImage.addEventListener('click', function() {
-                                    handleWeatherData(lat, lon);
-                                });
-                            } else {
-                                console.error('.map-image element not found.');
-                            }
+                            // Fetch weather data automatically
+                            handleWeatherData(lat, lon);
                         },
                         function(error) {
                             switch (error.code) {

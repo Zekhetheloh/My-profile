@@ -896,51 +896,56 @@ cursor: pointer;
 
 /* Message Form */
 .message-form {
-margin-top: 40px;
-max-width: 600px;
-margin-left: auto;
-margin-right: auto;
-text-align: center; /* Center-align the text */
+  margin-top: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; /* Center-align the text */
 }
 
 .message-form h2 {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .message-form .form-group {
-margin-bottom: 15px;
-text-align: left; /* Align labels and inputs to the left within the centered form */
+  margin-bottom: 15px;
+  text-align: left; /* Align labels and inputs to the left within the centered form */
 }
 
 .message-form label {
-display: block;
-margin-bottom: 5px;
-font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .message-form input,
 .message-form textarea {
-width: 100%;
-padding: 10px;
-border: 1px solid #ccc;
-border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .message-form button {
-padding: 10px 20px;
-font-size: 1em;
-color: #fff;
-background-color: #007bff; /* Adjust color as needed */
-border: none;
-border-radius: 4px;
-cursor: pointer;
-margin-top: 10px;
-display: inline-block; /* Ensure the button aligns correctly */
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #C790A7; /* Background color matching other buttons */
+  border: 2px solid #D9892B; /* Border color matching other buttons */
+  border-radius: 50px; /* Rounded corners like other buttons */
+  cursor: pointer;
+  margin-top: 10px;
+  display: inline-block; /* Ensure the button aligns correctly */
+  text-transform: uppercase; /* Capitalize text */
+  font-weight: bold; /* Make text bold */
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
 }
 
 .message-form button:hover {
-background-color: #0056b3; /* Darker shade for hover effect */
+  background-color: #D9892B; /* Background color on hover */
+  border-color: #C790A7; /* Border color on hover */
 }
+
 
 /* Projects Section */
 .projects-section {
