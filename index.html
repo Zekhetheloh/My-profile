@@ -79,7 +79,7 @@
                              <p>I am a dedicated and results-driven Information and Communication Technology (ICT) professional with a degree in Information and Communication Technology. My academic background has equipped me with a solid foundation in both the theoretical and practical aspects of technology, including cyber security, software development, network management,  and data analysis.</p>
                                 <div class="general-button">
                                     <div class="btn-wrap">
-                                    <a href="#" class="btn-accent">Hire Me</a>
+                                    <a href="weather.html" class="btn-accent">Weather</a>
                                     </div>
                                     <div class="btn-wrap">
                                         <a href="#" class="btn-outline-dark">Download CV</a>
@@ -325,130 +325,6 @@
                     </div>
                  </div>
             </div>
-</section>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const weatherApiKey = '6a227e00b91caf422df5f66b0f9fac09';
-        const geocodeApiKey = 'e97fcca294754ba390a62c2332ab0bb2';
-
-        function displayLocationInfo(location) {
-            const locationElement = document.getElementById('location-info');
-            locationElement.textContent = `Location: ${location}`;
-        }
-
-        function displayWeatherInfo(weather) {
-            const weatherElement = document.getElementById('weather-info');
-            weatherElement.textContent = `Weather Info: ${weather}`;
-        }
-
-        function handleWeatherData(lat, lon) {
-            console.log(`Fetching weather data for coordinates: ${lat}, ${lon}`);
-
-            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const temperature = data.main.temp;
-                    const pressure = data.main.pressure;
-                    const humidity = data.main.humidity;
-                    const windSpeed = data.wind.speed;
-                    const description = data.weather[0].description;
-
-                    const weatherInfo = `Temperature: ${temperature}°C, Pressure: ${pressure} hPa, Humidity: ${humidity}%, Wind Speed: ${windSpeed} m/s, Weather: ${description}`;
-                    displayWeatherInfo(weatherInfo);
-                })
-                .catch(error => {
-                    alert('Failed to retrieve weather data. Please try again later.');
-                    console.error('Error fetching weather data:', error);
-                });
-        }
-
-        function handleGeocoding(lat, lon) {
-            console.log(`Fetching geocoding data for coordinates: ${lat}, ${lon}`);
-            const query = `${lat},${lon}`;
-            const geocodeApiUrl = 'https://api.opencagedata.com/geocode/v1/json';
-            const geocodeRequestUrl = `${geocodeApiUrl}?key=${geocodeApiKey}&q=${encodeURIComponent(query)}&pretty=1&no_annotations=1`;
-
-            fetch(geocodeRequestUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.results && data.results.length > 0) {
-                        const location = data.results[0].formatted;
-                        displayLocationInfo(location);
-                    } else {
-                        displayLocationInfo('No results found for the provided coordinates.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching geocoding data:', error);
-                });
-        }
-
-        function getLocationAndSetup() {
-            if (navigator.geolocation) {
-                console.log('Geolocation is supported. Attempting to get position...');
-
-                navigator.geolocation.getCurrentPosition(
-                    function(position) {
-                        const lat = position.coords.latitude;
-                        const lon = position.coords.longitude;
-
-                        console.log(`Position obtained: Latitude ${lat}, Longitude ${lon}`);
-
-                        // Handle reverse geocoding
-                        handleGeocoding(lat, lon);
-
-                        // Set up event listener for the map image
-                        const mapImage = document.querySelector('.map-image');
-                        if (mapImage) {
-                            mapImage.addEventListener('click', function() {
-                                handleWeatherData(lat, lon);
-                            });
-                        } else {
-                            console.error('.map-image element not found.');
-                        }
-                    },
-                    function(error) {
-                        switch (error.code) {
-                            case error.PERMISSION_DENIED:
-                                alert('User denied the request for Geolocation.');
-                                break;
-                            case error.POSITION_UNAVAILABLE:
-                                alert('Location information is unavailable.');
-                                break;
-                            case error.TIMEOUT:
-                                alert('The request to get user location timed out.');
-                                break;
-                            case error.UNKNOWN_ERROR:
-                                alert('An unknown error occurred.');
-                                break;
-                        }
-                        console.error('Geolocation error:', error);
-                    },
-                    {
-                        enableHighAccuracy: true,
-                        timeout: 5000,
-                        maximumAge: 0
-                    }
-                );
-            } else {
-                alert('Geolocation is not supported by this browser.');
-            }
-        }
-
-        getLocationAndSetup();
-    });
-</script>
-
-    
+</section>   
 </body>
 </html>
