@@ -975,11 +975,12 @@ background-color: #0056b3; /* Darker shade for hover effect */
   display: block;
 }
 
-/* Button on top of the image */
+/* Centered button at the bottom */
 .button-overlay {
   position: absolute;
-  top: 20px; /* Position the button */
-  left: 20px;
+  bottom: 20px; /* Position the button at the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally using transform */
   z-index: 10; /* Ensure the button is above the image */
 }
 
