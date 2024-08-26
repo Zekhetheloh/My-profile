@@ -331,8 +331,19 @@
         const weatherApiKey = '6a227e00b91caf422df5f66b0f9fac09';
         const geocodeApiKey = 'e97fcca294754ba390a62c2332ab0bb2';
 
+        function displayLocationInfo(location) {
+            const locationElement = document.getElementById('location-info');
+            locationElement.textContent = `Location: ${location}`;
+        }
+
+        function displayWeatherInfo(weather) {
+            const weatherElement = document.getElementById('weather-info');
+            weatherElement.textContent = `Weather Info: ${weather}`;
+        }
+
         function handleWeatherData(lat, lon) {
-            // Fetch weather data
+            console.log(`Fetching weather data for coordinates: ${lat}, ${lon}`);
+
             fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric`)
                 .then(response => {
                     if (!response.ok) {
@@ -347,12 +358,8 @@
                     const windSpeed = data.wind.speed;
                     const description = data.weather[0].description;
 
-                    alert(`Current weather information:
-Temperature: ${temperature}°C
-Pressure: ${pressure} hPa
-Humidity: ${humidity}%
-Wind Speed: ${windSpeed} m/s
-Weather: ${description}`);
+                    const weatherInfo = `Temperature: ${temperature}°C, Pressure: ${pressure} hPa, Humidity: ${humidity}%, Wind Speed: ${windSpeed} m/s, Weather: ${description}`;
+                    displayWeatherInfo(weatherInfo);
                 })
                 .catch(error => {
                     alert('Failed to retrieve weather data. Please try again later.');
@@ -361,11 +368,11 @@ Weather: ${description}`);
         }
 
         function handleGeocoding(lat, lon) {
+            console.log(`Fetching geocoding data for coordinates: ${lat}, ${lon}`);
             const query = `${lat},${lon}`;
             const geocodeApiUrl = 'https://api.opencagedata.com/geocode/v1/json';
             const geocodeRequestUrl = `${geocodeApiUrl}?key=${geocodeApiKey}&q=${encodeURIComponent(query)}&pretty=1&no_annotations=1`;
 
-            // Fetch reverse geocoding data
             fetch(geocodeRequestUrl)
                 .then(response => {
                     if (!response.ok) {
@@ -375,9 +382,10 @@ Weather: ${description}`);
                 })
                 .then(data => {
                     if (data.results && data.results.length > 0) {
-                        console.log(`Location: ${data.results[0].formatted}`);
+                        const location = data.results[0].formatted;
+                        displayLocationInfo(location);
                     } else {
-                        console.log('No results found for the provided coordinates.');
+                        displayLocationInfo('No results found for the provided coordinates.');
                     }
                 })
                 .catch(error => {
@@ -387,18 +395,27 @@ Weather: ${description}`);
 
         function getLocationAndSetup() {
             if (navigator.geolocation) {
+                console.log('Geolocation is supported. Attempting to get position...');
+
                 navigator.geolocation.getCurrentPosition(
                     function(position) {
                         const lat = position.coords.latitude;
                         const lon = position.coords.longitude;
 
+                        console.log(`Position obtained: Latitude ${lat}, Longitude ${lon}`);
+
                         // Handle reverse geocoding
                         handleGeocoding(lat, lon);
 
                         // Set up event listener for the map image
-                        document.querySelector('.map-image').addEventListener('click', function() {
-                            handleWeatherData(lat, lon);
-                        });
+                        const mapImage = document.querySelector('.map-image');
+                        if (mapImage) {
+                            mapImage.addEventListener('click', function() {
+                                handleWeatherData(lat, lon);
+                            });
+                        } else {
+                            console.error('.map-image element not found.');
+                        }
                     },
                     function(error) {
                         switch (error.code) {
@@ -415,6 +432,7 @@ Weather: ${description}`);
                                 alert('An unknown error occurred.');
                                 break;
                         }
+                        console.error('Geolocation error:', error);
                     },
                     {
                         enableHighAccuracy: true,
@@ -430,7 +448,6 @@ Weather: ${description}`);
         getLocationAndSetup();
     });
 </script>
-
 
     
 </body>
