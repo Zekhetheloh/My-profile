@@ -94,10 +94,14 @@
         </div>
 </section>  
 <script>
-    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('active');
-    });
-</script>  
+    document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenuToggle.addEventListener('click', function() {
+navLinks.classList.toggle('active');
+});
+});
+</script> 
 </body>
 </html>
