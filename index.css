@@ -365,69 +365,94 @@
 
 /*------ Nav Icon
 ------------------------------------------*/
-#navbar .menu-icon {
-    display: none;
-}
-@media screen and (max-width: 1080px) {  
-  #navbar .menu-icon {
-      display: block;
-  }
-  .top-menu .menu-icon .icon-segment,
-  .top-menu.menu-bar .menu-icon .icon-close {
-      display: block;
-  }
-  .top-menu.menu-bar .menu-icon .icon-segment,
-  .top-menu .menu-icon .icon-close {
-      display: none;
-  }
+   /* Navigation Bar Styling */
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/*------ Responsive Navigation
---------------------------------------*/
-  .top-menu.menu-bar {
-      position: relative;
-      width: 100%;
-      height: 100%;
+/* Navigation Bar Styling */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #C790A7; /* Background color of the navbar */
+  padding: 10px 20px; /* Padding around the navbar */
+  position: relative; /* Position relative for positioning the mobile menu */
+}
+
+.navbar .logo img {
+  height: 40px; /* Adjust logo size */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Space between links */
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  color: #fff; /* Text color for the links */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Make text bold */
+  font-size: 16px; /* Adjust font size */
+  padding: 10px 15px; /* Padding around the links */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.nav-links a:hover {
+  background-color: #D9892B; /* Background color on hover */
+  color: #fff; /* Text color on hover */
+  border-radius: 5px; /* Rounded corners on hover */
+}
+
+/* Mobile Menu Button */
+.mobile-menu-toggle {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-links {
+      display: none; /* Hide links by default */
+      position: absolute;
+      top: 60px; /* Adjust based on navbar height */
+      right: 20px; /* Align to the right */
+      background-color: #C790A7; /* Match navbar background */
+      width: 100%; /* Full width for dropdown menu */
+      max-width: 300px; /* Max width for dropdown menu */
+      flex-direction: column; /* Stack links vertically */
+      gap: 0; /* Remove space between links */
+      padding: 0; /* Remove default padding */
   }
-  .top-menu .bar-icon {
-      position: fixed;
-      top: 40px;
-      right: 40px;
-      z-index: 9;
-      color: #fff;
+  
+  .nav-links li {
+      display: block; /* Display links in block format */
+  }
+  
+  .nav-links a {
+      padding: 15px 20px; /* Adjust padding for dropdown links */
   }
 
-@media screen and (max-width: 1080px){
-    .header-wrap .top-menu.menu-bar ul {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 8;
-        text-align: center;
-        padding: 100px 0;
-        background: rgba(0,0,0,0.7);
-        transition: width 2s, height 2s, background-color 2s, transform 2s;
-    }
-    .header-wrap .top-menu ul {
-        display: none;
-        margin: 0;
-    }
-    .header-wrap .top-menu.menu-bar ul {
-        display: block;
-    }
-    .header-wrap .top-menu.menu-bar ul {
-        display: unset;
-    }
-    .header-wrap .top-menu.menu-bar .menu-list a {
-        font-size: 3.5em;
-        color: #fff;
-    }
-    .header-wrap .top-menu.menu-bar .menu-list a:hover {
-        color: #fba820;
-        border: none;
-    }
+  .mobile-menu-toggle {
+      display: block; /* Show the mobile menu button */
+  }
+
+  .nav-links.active {
+      display: flex; /* Show menu when active */
+  }
 }
 
 /*----- Billboard
