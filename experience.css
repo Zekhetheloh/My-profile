@@ -1,0 +1,53 @@
+/* Basic reset and styling */
+
+#Experience {
+    padding: 20px;
+}
+
+.experience-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.experience-container {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid #333;
+}
+
+.experience-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.experience-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #333;
+    top: 0;
+}
+
+.timeline-content {
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .experience-container {
+        padding-left: 10px;
+        border-left: 1px solid #333;
+    }
+    .experience-item::before {
+        left: -4px;
+        width: 8px;
+        height: 8px;
+    }
+}
