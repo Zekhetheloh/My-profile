@@ -9,7 +9,7 @@
     box-sizing: border-box;
   }
   body {
-    font-family: 'Playfair Display', serif;
+    font-family: "Trirong", serif;
     font-size: 16px;
     line-height: 1.7;
     color: #868686;
@@ -135,7 +135,7 @@
   
   h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     line-height: 1.2;
-    font-family: "Source Sans Pro", Roboto, sans-serif;
+    font-family: "Trirong", serif;
     text-transform: capitalize;
   }
   h1, h2, h3 {
